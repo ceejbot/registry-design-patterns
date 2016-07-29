@@ -274,6 +274,8 @@ Often highly coupled inside: is it decomposed into modules?
 ## [fit] __Estragon:__ Let's fix publication.
 ## [fit] __Vladimir:__ Fine. But how?
 
+^ This enters the speculative portion of the talk.
+
 ---
 
 ## [fit] __Message queues__
@@ -281,7 +283,7 @@ Often highly coupled inside: is it decomposed into modules?
 ---
 
 ## [fit] message queues
-## [fit] inversion of control
+## [fit] inversion of __control__
 
 ^ Turn the pattern around: instead of imperative code shoving a bunch of mutable data through services, you have an immutable message -- a request for work -- sitting in a message queue.
 
@@ -302,17 +304,20 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-# http://queues.io
+## [fit] http://queues.io
 
-just to get an idea of how popular they are: look at them all! (note also Kafka, LinkedIn's entry)
+^ just to get an idea of how popular they are: look at them all! (note also Kafka, LinkedIn's entry)
 
 ---
 
-![right](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/pointing.gif)
+## [fit] re-imagine publishing a package
 
-## re-imagine publishing a package
+---
 
-Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
+![](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/pointing.gif)
+
+
+^ Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
 
 ---
 
@@ -328,10 +333,10 @@ Publication is a series of steps, each of which can either suceed or fail. Failu
 
 # queue advantages
 
-- retries are easy
-- can scale by scaling workers
+- retries are easier
+- scale by scaling workers
 - rollback is easier
-- the message queue needs to be reliable, but workers can crash
+- the queue must be reliable, but workers can crash
 
 ---
 
@@ -339,13 +344,27 @@ Publication is a series of steps, each of which can either suceed or fail. Failu
 
 - complexity
 - complete overhaul of the way things are often structured
-- they're often really slow (the fast one is Kafka & it's the JVM)
+- they're often slow
+
+^ The fast one is Kafka & it's weird & requires the JVM.
 
 ---
 
 The registry is moving toward message queues behind the scenes.
 
 Slowly.
+
+---
+
+# [fit] none of these patterns are wrong
+# [fit] none of these patterns are right
+
+---
+
+# [fit] it's tradeoffs
+# [fit] all the way down
+
+---
 
 ---
 
