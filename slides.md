@@ -17,30 +17,6 @@
 
 ---
 
-## [fit] __A Pattern Language__
-## [fit] Christopher Alexander
-
-^ Patterns in architecture & city design. Influential on a generation of programmers.
-
----
-
-## [fit] __Design Patterns__
-### [fit] Elements of Reusable Object-Oriented Software
-### [fit] aka the Gang of Four book
-
-^  Published in 1994. Hugely influential. Gamma, Helm, Johnson, Vlissides. When you hear "model/view/controller", it came from this book.
-
----
-
-## [fit] __Don't read it.__
-### [fit] At least not right now.
-
-When you do, remember it's *descriptive* not *prescriptive*.
-
-^ Also it's about OO software, which is not the be-all & end-all. Also they forgot that the GOF recommended composition over inheritance, but I digress.
-
----
-
 ## [fit] patterns in __code__
 ## [fit] patterns in __systems__
 
@@ -83,13 +59,6 @@ When you do, remember it's *descriptive* not *prescriptive*.
 # [fit] __package:__ tar archive + metadata
 
 ^ The thing I have to keep track of for you & serve as fast as possible to you when you ask for it.
-
----
-
-## [fit] __doc.json:__ the json metadata
-## [fit] __tarball:__ the tar archive
-
-^ More jargon! The first one comes from the couchdb roots of the registry. The second is unix slang.
 
 ---
 
@@ -184,9 +153,19 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
+# [fit] reads are __boring__:
+# [fit] auth ➜ nginx serving __files__
+
+---
+
+# [fit] mutating data is interesting:
+# [fit] let's look at __publishing__
+
+---
+
 ![fit](images/cli-publish-couch.png)
 
-^ Block diagram! This looks modular, right?
+^ Block diagram! This looks modular, right? Lots of microservices, arrows. There's a secret horror in there.
 
 ---
 
@@ -195,7 +174,12 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-# [fit] welp
+![fit](images/great_interest.gif)
+
+---
+
+# [fit] we'll come back to this
+
 
 ---
 
