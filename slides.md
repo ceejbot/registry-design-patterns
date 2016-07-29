@@ -52,6 +52,8 @@ When you do, remember it's *descriptive* not *prescriptive*.
 ## [fit] has typical __system__ patterns
 ## [fit] \(some good, some bad)
 
+^ We are going to descriptively analyze some patterns I see in the npm registry.
+
 ---
 
 # [fit] what is the __registry__?
@@ -157,13 +159,13 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## [fit] Q: what is __modularity__ anyway?
+## [fit] Q: where does __modularity__ come from?
 ## [fit] A: __information hiding__
 
 ---
 
 # [fit] "On the Criteria To Be Used in
-# [fit] Decomposing Systems into Modules"
+# [fit] Decomposing Systems into __Modules__"
 # [fit] — D. L. Parnas, 1972
 
 ^ This is a pretty cool paper. The example he works through is very 1972, but you get the idea from it.
@@ -175,20 +177,25 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## [fit] hide behind an interface
-## [fit] so you can change things
+## [fit] __hide__ behind an interface
+## [fit] so you can __change__ things
 
----
-
-## [fit] this is one of the great secrets of programming
-
-^ I am not even kidding.
+^ One of the great secrets of programming. If you can master this, you've got it. Also tell me how you did it.
 
 ---
 
 ![fit](images/cli-publish-couch.png)
 
-^ Block diagram!
+^ Block diagram! This looks modular, right?
+
+---
+
+# [fit] auth sets up package access on a publish
+# [fit] as a side effect
+
+---
+
+# [fit] welp
 
 ---
 
@@ -253,7 +260,7 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-# [fit] publication is time-senstive
+# [fit] publication is time-sensitive
 # [fit] we have __tens of seconds__ afterward
 
 ^ The clock is ticking on a publication: we want it to go, as fast as possible as robustly as possible, we get only one shot
@@ -300,7 +307,7 @@ Often highly coupled inside: is it decomposed into modules?
 ---
 
 ## [fit] you __scale__ by adding more workers
-## [fit] it's all about the fan-out
+## [fit] \(sounds a lot like the log handlers, huh?)
 
 ---
 
@@ -318,16 +325,6 @@ Often highly coupled inside: is it decomposed into modules?
 
 
 ^ Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
-
----
-
-- store the payload as a message: package, publisher, current state
-- worker looks at the message
-- authz (reject or move to next step)
-- validation
-- update registry metadata
-- store tarball
-- success!
 
 ---
 
@@ -350,9 +347,15 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-The registry is moving toward message queues behind the scenes.
+# [fit] we're moving toward queues
+# [fit] slowly, __invisibly__
 
-Slowly.
+---
+
+## [fit] monolith
+## [fit] microservices
+## [fit] transaction logs
+## [fit] message queues
 
 ---
 
@@ -361,10 +364,14 @@ Slowly.
 
 ---
 
-# [fit] it's tradeoffs
+# [fit] it's __tradeoffs__
 # [fit] all the way down
 
 ---
+
+# [fit] what __problem__ are you solving?
+# [fit] what __tools__ do you have to hand?
+# [fit] what is your __team__ experienced with?
 
 ---
 
