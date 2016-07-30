@@ -3,6 +3,15 @@
 
 ---
 
+![right](images/malcolm-files.jpg)
+
+## [fit] C J Silverio, CTO
+## [fit] @ceejbot
+
+^ I have npm engineering under my care. Cat Technology Officer.
+
+---
+
 ## [fit] human brains are
 ## [fit] __pattern-detection__ machines
 
@@ -32,9 +41,9 @@
 
 ---
 
-# [fit] what is the __registry__?
+![](images/chalkboard.gif)
 
-^ back up a second
+^ What is the registry? Let's back up & define some terms.
 
 ---
 
@@ -42,16 +51,14 @@
 ## [fit] the services that manage
 ## [fit] __package__ metadata & payloads
 
----
-
-# [fit] Okay, so what's a __package__?
+^ Okay, so what's a package?
 
 ---
 
 # [fit] __module:__ a javascript code unit
 # [fit] __package:__ directory with a package.json
 
-^ This is your point of view. package.json is the single most overloaded concept in the app
+^ This is your point of view.
 
 ---
 
@@ -62,65 +69,70 @@
 
 ---
 
-## [fit] back to those design patterns…
+# [fit] 318,466 packages
+# [fit] 1.4 million tarballs
+# [fit] medium data (fits on 1 disk)
+
+----
+
+![](images/winking.gif)
+
+^ okay! now we know what we're discussing
 
 ---
 
-## [fit] monolith
+## [fit] the systems that manage all this data
+## [fit] have some emergent __patterns__
+
+^ Let's go into them
+
+---
+
+## [fit] monoliths
 ## [fit] microservices
 ## [fit] transaction logs
 ## [fit] message queues
 
-^ Let's talk about them in the context of the registry.
+^ Here's what we're going to talk about
 
 ---
 
 ## [fit] monoliths:
-## [fit] registry 1.0
-## [fit] our website
+## [fit] everything in one big process
 
 ^ The registry was entirely implemented inside couchdb. (It still sort of is! The couch app still does work today.)
 
 ---
 
-# monolith advantages
+## [fit] monoliths are __okay__
+## [fit] easy to write & change
+## [fit] perf more than good enough
 
-They are easy to write & change. This is fantastic when you are still figuring out the problem you're solving.
-
-Their performance is more than good enough for services measuring their usage in requests/minute.
-
----
-
-# monolith disadvantages
-
-Hard to scale: expensive & unwieldy.
-Hard to work on for large teams.
-Often highly coupled inside: is it decomposed into modules?
+^ They are easy to write & change. This is fantastic when you are still figuring out the problem you're solving. Their performance is more than good enough for services measuring their usage in requests/minute.
 
 ---
 
-# [fit] our 2.0 rewrite switched to
-# [fit] many interconnected __microservices__
+![](images/ollie-double-takes.gif)
 
-^ They all have fairly names like "frontdoor", auth, validate & store, etc.
-
----
-
-# microservice advantages
-
-- Forces you to define interfaces.
-- Implementations are (mostly) hidden.
-- Lots of scaling dials to turn.
-- Easier to distribute the work.
+^ time to scale it
 
 ---
 
-# microservice disadvantages
+## [fit] time to __scale__ perf & team size
+## [fit] monoliths are less okay
 
-- more complexity
-- how do you handle failure & retries?
-- lots of mass to move if you sliced it wrongly
-- it's still possible to not be modular
+---
+
+![](images/malcolm-two-phones.jpg)
+
+^ This is how you scale a monolith.
+
+---
+
+## [fit] it's easy to write highly-coupled code
+## [fit] inside a __non-modular__ monolith
+
+^ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
@@ -149,9 +161,40 @@ Often highly coupled inside: is it decomposed into modules?
 ## [fit] __hide__ behind an interface
 ## [fit] so you can __change__ things
 
-^ One of the great secrets of programming. If you can master this, you've got it. Also tell me how you did it.
+---
+
+![fit](images/great_interest.gif)
+
+^ One of the great secrets of programming.  If you master this, tell me all about how you did it, please.
+
 
 ---
+
+# [fit] our 2.0 rewrite switched to
+# [fit] many interconnected __microservices__
+
+^ They all have fairly names like "frontdoor", auth, validate & store, etc.
+
+---
+
+# microservice advantages
+
+- forces you to define interfaces
+- implementations are hidden inside services
+- lots of scaling dials to turn
+
+---
+
+# microservice disadvantages
+
+- more complexity
+- how do you handle failure & retries?
+- lots of mass to move if you sliced it wrongly
+- it's still possible to not be modular
+
+---
+
+![left](images/obviously.gif)
 
 # [fit] reads are __boring__:
 # [fit] auth ➜ nginx serving __files__
@@ -174,12 +217,9 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-![fit](images/great_interest.gif)
+![fit](images/cant-be-good.gif)
 
----
-
-# [fit] we'll come back to this
-
+^ No, it can't. And we'll come back to this.
 
 ---
 
@@ -212,7 +252,7 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-# [fit] registry followers:
+## [fit] registry __followers__:
 ## [fit] consumers of couchdb's commit logs
 
 ^ We use the log pattern to fan data out from a central, standard format into structures more suitable for specific tasks, or to act on the news that a package changed.
@@ -237,6 +277,12 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
+![](images/axe-tank.gif)
+
+^ This is obviously awesome.
+
+---
+
 ## [fit] pointless trivia!
 ## [fit] look at the __Reston__ package
 
@@ -251,25 +297,20 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## [fit] All kids love __log__.
+![](images/malcolm-head-hands.gif)
 
-^ This is a great pattern & we'll keep using it.
-
----
-
-## [fit] I am __tired__ of
-## [fit] microservices.
+^ I am tired of microservices. We messed up the modularization. Unwinding failure is a PITA.
 
 ---
 
 ## [fit] __Estragon:__ Let's fix publication.
 ## [fit] __Vladimir:__ Fine. But how?
 
-^ This enters the speculative portion of the talk.
-
 ---
 
 ## [fit] __Message queues__
+
+^ This enters the speculative portion of the talk.
 
 ---
 
@@ -280,13 +321,8 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## functional, sorta kinda
-
-* immutable messages
-* workers doing what the message requests
-* what needs to be done next
-* what needs to be unwound if it fails
-* retries are easy
+## [fit] __workers__ consume messages
+## [fit] & retry or unwind on failure
 
 ---
 
@@ -301,14 +337,10 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## [fit] re-imagine publishing a package
-
----
-
 ![](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/pointing.gif)
 
 
-^ Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
+^ re-imagine publishing a package: Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
 
 ---
 
@@ -325,7 +357,7 @@ Often highly coupled inside: is it decomposed into modules?
 
 - complexity
 - complete overhaul of the way things are often structured
-- they're often slow
+- they're sometimes slow
 
 ^ The fast one is Kafka & it's weird & requires the JVM.
 
@@ -336,15 +368,15 @@ Often highly coupled inside: is it decomposed into modules?
 
 ---
 
-## [fit] monolith
+## [fit] monoliths
 ## [fit] microservices
 ## [fit] transaction logs
 ## [fit] message queues
 
 ---
 
-# [fit] none of these patterns are wrong
-# [fit] none of these patterns are right
+# [fit] none of these patterns are __wrong__
+# [fit] none of these patterns are __right__
 
 ---
 
