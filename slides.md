@@ -40,7 +40,7 @@
 ---
 
 ## [fit] Let's analyze them not just for how they scale
-## [fit] but for how they promote __modularity__
+## [fit] but how they promote __modularity__
 
 ^ Modularity is one of the emergent themes of any discussion of node-packaged-modules.
 
@@ -51,12 +51,12 @@
 # [fit] __registry?__
 
 
-^ What is the registry? Let's back up & define some terms.
+^ What is the registry?  I hear Isaac doesn't understand this any more. Let's back up & define some terms.
 
 ---
 
-## [fit] registry, n: the system of
-## [fit] services that manage __packages__
+## [fit] __registry__, *n*: the system of
+## [fit] services that manage __package__
 # [fit] tar archives + metadata
 
 ^ The thing I have to keep track of for you & serve as fast as possible to you when you ask for it.
@@ -72,7 +72,7 @@
 ---
 
 # [fit] npm's __largest__ engineering project
-# [fit] and one of its several scaling problems
+# [fit] & its most obvious scaling challenge
 
 ----
 
@@ -141,6 +141,7 @@
 ## [fit] Q: where does __modularity__ come from?
 ## [fit] A: __information hiding__
 
+^ This term comes to us from a paper I recommend to you all.
 
 ---
 
@@ -148,7 +149,7 @@
 # [fit] Decomposing Systems into __Modules__"
 # [fit] — D. L. Parnas, 1972
 
-^ This is a pretty cool paper. The example he works through is very 1972, but you get the idea from it.
+^ One of you should look this up & tweet a link to it on the npmcamp hashtag. The example he works through is very 1972, but you get the idea from it.
 
 ---
 
@@ -162,20 +163,20 @@
 ## [fit] __hide__ info behind an interface
 ## [fit] so you can __change__ it
 
-^ Somebody looking at what a module exposes to things outside it see only its affordances, only the handles it has chosen to expose. If nothing outside your module can see which algorithm you used, you are free to change it.
+^ Somebody looking at what a module exposes to things outside it see only its affordances, only the handles it has chosen to expose. If nothing outside your module can see which algorithm you used, you are free to change it. This is why it's so important.
 
 ---
 
 ![fit](images/great_interest.gif)
 
-^ One of the great secrets of programming.  If you master this, tell me all about how you did it, please.
+^ Malcolm is very interested because this is 1 of the great secrets of programming. If you master getting it right the first time, tell me all about how you did it, please.
 
 ---
 
 ## [fit] the hot trend is rewriting
 ## [fit] monoliths as __microservices__
 
-^ We did this, and about half the of the current registry is a web of microservices.
+^ We've got a non-modular monolith; we modularized it & split it out into services, 100% on trend. about half the of the current registry is a web of microservices.
 
 ---
 
@@ -189,14 +190,14 @@
 ## [fit] microservices can still
 ## [fit] __mess up__ modularity
 
-^ You can still write coupled code-- one service that knows far too much about how another service does its job.
+^ You can still write coupled code-- one service that knows far too much about how another service does its job. A human is writing the code. Because the human doing the typing knows it all, the services they develop can know far too much about how data is structured, or what data needs to change when something happens.
 
 ---
 
 ## [fit] can __scatter__ a task across services
 ## [fit] making retries & failure hard to cope with
 
-^ Abstractions can leak-- two services can know far too much about how data is structured, or what data needs to change when something happens.
+^ You can write services that start doing a task in one place, toss it over to another place, hand the result back to a third service that decides that the work the first two is all wrong.
 
 ---
 
@@ -224,29 +225,29 @@
 
 ![fit](images/relax.gif)
 
-^ No, sorry, not gonna relax. We'll come back to this.
+^ Malcolm is off to yell at some databases and I'll relax. We'll come back to this.
 
 ---
 
 # [fit] after publication, it's a different pattern:
 # [fit] the transaction __log__
 
-^ The microservices pattern of distributed system is how everything works up to the moment a publication is commited. Afterward we switch to a different design pattern.
+^ The microservices pattern of distributed system is how everything works up to the moment a publication is committed. Afterward we switch to a different design pattern.
 
 ---
 
-## [fit] transaction log
-## [fit] write-ahead log (WAL)
-## [fit] commit log
+## [fit] transaction __log__
+## [fit] write-ahead __log__ (WAL)
+## [fit] commit __log__
 
-^ This is a great pattern! Solid, reliable, the heart of many systems.
+^ I'm relaxed! This is a great pattern! Solid, reliable, the heart of many systems.
 
 ---
 
 # [fit] [The Log](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying): What every software engineer should know
 ## [fit] about real-time data's __unifying abstraction__
 
-^ The blog post to read, from a LinkedIn engineer.
+^ The blog post to read, from a LinkedIn engineer. Somebody tweet this!
 
 ---
 
@@ -266,7 +267,7 @@
 
 ![fit](images/cli-post-publish.png)
 
-^ we fan out like mad after package metadata hits couchdb
+^ we fan out like whoa after package metadata hits couchdb
 
 ---
 
@@ -323,7 +324,7 @@
 ---
 
 ## [fit] a worker does __one thing__
-## [fit] puts a new message back on the queue
+## [fit] puts a new message back into the queue
 
 ---
 
@@ -356,6 +357,8 @@
 ## [fit] we don't have them in production
 ## [fit] so __∞__ disadvantages!
 
+^ But they're in heavy use in many deployments, so it's a pattern I know will help us clean up some of our pre-publication flow.
+
 ---
 
 ![](images/shrug-malcolm.gif)
@@ -364,12 +367,10 @@
 
 ---
 
-## [fit] monoliths
-## [fit] microservices
-## [fit] transaction logs
-## [fit] message queues
+## [fit] what's the pattern that __emerges__
+## [fit] from this discussion of patterns?
 
-^ Woah, look at all these patterns. All of them will be in present in the registry at once over time.
+^ The registry is a small-ish dist sys and it has a whole pile of system patterns in it. What can we learn?
 
 ---
 
@@ -411,3 +412,5 @@
 ---
 
 ![](images/see-me-again.gif)
+
+^ You'll see me again DJing at the afterparty-- please come!
