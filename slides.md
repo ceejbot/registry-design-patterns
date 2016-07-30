@@ -42,9 +42,14 @@
 ## [fit] Let's analyze them not just for how they scale
 ## [fit] but for how they promote __modularity__
 
+^ Modularity is one of the emergent themes of any discussion of node-packaged-modules.
+
 ---
 
-![](images/chalkboard.gif)
+![right](images/malcolm_hand_on_head.jpg)
+
+# [fit] __registry?__
+
 
 ^ What is the registry? Let's back up & define some terms.
 
@@ -61,6 +66,8 @@
 # [fit] 361,263 packages
 # [fit] 2,278,817 million tarballs
 # [fit] __medium__ data (fits on 1 disk)
+
+^ bigger than memory, still squeaks in on a single disk
 
 ---
 
@@ -105,8 +112,10 @@
 
 ---
 
-## [fit] time to __scale__ perf & team size
+## [fit] when you __scale__ perf & team size
 ## [fit] monoliths are less okay
+
+^ The same factors that make them easy to smush around early make them harder to work on later.
 
 ---
 
@@ -119,7 +128,7 @@
 ## [fit] it's easy to write highly-coupled code
 ## [fit] inside a __non-modular__ monolith
 
-^ Often highly coupled inside: is it decomposed into modules?
+^ There are no physical barriers to it-- only a programmer thinking ahead and probably getting it wrong.
 
 ---
 
@@ -129,6 +138,8 @@
 
 ## [fit] Q: where does __modularity__ come from?
 ## [fit] A: __information hiding__
+
+^ Information: data and its structures and the algorithms that operate on them.
 
 ---
 
@@ -143,7 +154,7 @@
 ## [fit] __hide__ information
 ## [fit] __hide__ implementation
 
-^ The details of how you structure your data in memory. Exactly which algorithms you use to change it.
+^ Somebody looking at what a module exposes to things outside it see only its affordances, only the handles it has chosen to expose.
 
 ---
 
@@ -184,9 +195,11 @@
 ## [fit] can __scatter__ a task across services
 ## [fit] making retries & failure hard to cope with
 
+^ Abstractions can leak-- two services can know far too much about how data is structured, or what data needs to change when something happens.
+
 ---
 
-![fit](images/obviously.gif)
+![fit](images/wincing.gif)
 
 ^ I might be mentioning this for a reason. Let's look at what happens when you publish a package.
 
@@ -250,7 +263,7 @@
 
 ---
 
-![fit](images/post-pub.png)
+![fit](images/cli-post-publish.png)
 
 ^ we fan out like mad after package metadata hits couchdb
 
