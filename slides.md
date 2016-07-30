@@ -100,7 +100,7 @@
 
 ## [fit] monoliths are __okay__
 ## [fit] easy to write & change
-## [fit] perf more than good enough early
+## [fit] perf more than good enough
 
 ^ They are easy to write & change. This is fantastic when you are still figuring out the problem you're solving. Their performance is more than good enough for services measuring their usage in requests/minute.
 
@@ -108,7 +108,7 @@
 
 ![](images/ollie-double-takes.gif)
 
-^ Malcolm shows up & tells you it's time to scale.
+^ Malcolm shows up & tells you congrats! you won! it's time to scale.
 
 ---
 
@@ -128,18 +128,19 @@
 ## [fit] it's easy to write highly-coupled code
 ## [fit] inside a __non-modular__ monolith
 
-^ There are no physical barriers to it-- only a programmer thinking ahead and probably getting it wrong.
+^ There are no barriers to it: one repo, change lots of things all over the place. Only a programmer thinking ahead and probably getting it wrong.
 
 ---
 
 ## [fit] __modularity:__ let's be less vague
+
+^ Let's pause again to define some terms.
 
 ---
 
 ## [fit] Q: where does __modularity__ come from?
 ## [fit] A: __information hiding__
 
-^ Information: data and its structures and the algorithms that operate on them.
 
 ---
 
@@ -151,17 +152,17 @@
 
 ---
 
-## [fit] __hide__ information
-## [fit] __hide__ implementation
+## [fit] __information__
+## [fit] data, its structures, the algorithms
 
-^ Somebody looking at what a module exposes to things outside it see only its affordances, only the handles it has chosen to expose.
+^ Information: data and its structures and the algorithms that operate on them.
 
 ---
 
-## [fit] __hide__ behind an interface
-## [fit] so you can __change__ things
+## [fit] __hide__ info behind an interface
+## [fit] so you can __change__ it
 
-^ If nothing outside your module can see which algorithm you used, you are free to change it.
+^ Somebody looking at what a module exposes to things outside it see only its affordances, only the handles it has chosen to expose. If nothing outside your module can see which algorithm you used, you are free to change it.
 
 ---
 
@@ -344,7 +345,7 @@
 
 ---
 
-![](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/pointing.gif)
+![](images/puzzled-malcolm.jpg)
 
 
 ^ re-imagine publishing a package: Publication is a series of steps, each of which can either succeed or fail. Failure triggers a rollback & report to the requesting client.
@@ -394,7 +395,7 @@
 
 ---
 
-## [fit] build your product first
+## [fit] make your __users happy__ first
 ## [fit] because that's the hard part
 
 ---
@@ -405,7 +406,7 @@
 ---
 
 # [fit] we'll be changing ours
-# [fit] check back next year to find out how it turned out!
+# [fit] check back __next year__ to hear how it turned out
 
 ---
 
