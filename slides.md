@@ -183,14 +183,9 @@
 
 ---
 
-## [fit] I might be mentioning this for a reason.
+![fit](images/obviously.gif)
 
----
-
-![left](images/obviously.gif)
-
-# [fit] reads are __boring__:
-# [fit] auth ➜ nginx serving __files__
+^ I might be mentioning this for a reason.
 
 ---
 
