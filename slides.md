@@ -1,4 +1,4 @@
-## [fit] __design patterns__
+## [fit] __design patterns__ & __modularity__
 ## [fit] in the npm registry
 
 ---
@@ -15,7 +15,7 @@
 ## [fit] human brains are
 ## [fit] __pattern-detection__ machines
 
-^ There are seven layers in our brains, more or less, that match successively more abstract patterns against things we've experienced before. In comes edges of retina stimulation; out comes an image of our mother's face. Or of a tortoise on its back in the desert. Or of an 80s movie adapation of a Philip K Dick novel.
+^ Our brain is amazingly good at successively more abstract patterns against things we've experienced before. In comes edges of retina stimulation; out comes an image of our mother's face. And somebody says words and our brains match & produce an image of a tortoise on its back in the desert. Then we recognize a 80s movie adapation of a Philip K Dick novel.
 
 ---
 
@@ -29,7 +29,7 @@
 ## [fit] patterns in __code__
 ## [fit] patterns in __systems__
 
-^ The Design Patterns book focused on patterns in the code itself. There are also patterns in the design of distributed systems.
+^ we find patterns at every level
 
 ---
 
@@ -37,7 +37,12 @@
 ## [fit] has typical __system__ patterns
 ## [fit] \(some good, some bad)
 
-^ We are going to descriptively analyze some patterns I see in the npm registry.
+^ We are going to descriptively analyze some patterns I see in the npm registry and how well they do with the underlying theme of npm: modularity is good
+
+---
+
+## [fit] Let's analyze them not just for how they scale
+## [fit] but for how they promote __modularity__
 
 ---
 
@@ -49,21 +54,7 @@
 
 ## [fit] registry, noun:
 ## [fit] the services that manage
-## [fit] __package__ metadata & payloads
-
-^ Okay, so what's a package?
-
----
-
-# [fit] __module:__ a javascript code unit
-# [fit] __package:__ directory with a package.json
-
-^ This is your point of view.
-
----
-
-# [fit] my point of view:
-# [fit] __package:__ tar archive + metadata
+# [fit] __packages:__ tar archive + metadata
 
 ^ The thing I have to keep track of for you & serve as fast as possible to you when you ask for it.
 
@@ -71,20 +62,13 @@
 
 # [fit] 318,466 packages
 # [fit] 1.4 million tarballs
-# [fit] medium data (fits on 1 disk)
+# [fit] __medium__ data (fits on 1 disk)
 
 ----
 
 ![](images/winking.gif)
 
-^ okay! now we know what we're discussing
-
----
-
-## [fit] the systems that manage all this data
-## [fit] have some emergent __patterns__
-
-^ Let's go into them
+^ okay! now we know what we're discussing. let's go into the patterns
 
 ---
 
@@ -98,15 +82,15 @@
 ---
 
 ## [fit] monoliths:
-## [fit] everything in one big process
+## [fit] everything in __one__ big process
 
-^ The registry was entirely implemented inside couchdb. (It still sort of is! The couch app still does work today.)
+^ Our website! The registry used to be this too!
 
 ---
 
 ## [fit] monoliths are __okay__
 ## [fit] easy to write & change
-## [fit] perf more than good enough
+## [fit] perf more than good enough early
 
 ^ They are easy to write & change. This is fantastic when you are still figuring out the problem you're solving. Their performance is more than good enough for services measuring their usage in requests/minute.
 
@@ -114,7 +98,7 @@
 
 ![](images/ollie-double-takes.gif)
 
-^ time to scale it
+^ Malcolm shows up & tells you it's time to scale.
 
 ---
 
@@ -156,17 +140,20 @@
 ## [fit] __hide__ information
 ## [fit] __hide__ implementation
 
+^ The details of how you structure your data in memory. Exactly which algorithms you use to change it.
+
 ---
 
 ## [fit] __hide__ behind an interface
 ## [fit] so you can __change__ things
+
+^ If nothing outside your module can see which algorithm you used, you are free to change it.
 
 ---
 
 ![fit](images/great_interest.gif)
 
 ^ One of the great secrets of programming.  If you master this, tell me all about how you did it, please.
-
 
 ---
 
@@ -177,20 +164,26 @@
 
 ---
 
-# microservice advantages
+## [fit] you're forced to design an API
+## [fit] forced to hide implementation inside a service
 
-- forces you to define interfaces
-- implementations are hidden inside services
-- lots of scaling dials to turn
+^ Modularity is sort of forced on you. At least the attempt at it.
 
 ---
 
-# microservice disadvantages
+## [fit] microservices can still
+## [fit] __mess up__ modularity
 
-- more complexity
-- how do you handle failure & retries?
-- lots of mass to move if you sliced it wrongly
-- it's still possible to not be modular
+^ You can still write coupled code-- one service that knows far too much about how another service does its job.
+
+---
+
+## [fit] can scatter a task across services
+## [fit] making retries & failure hard to cope with
+
+---
+
+## [fit] I might be mentioning this for a reason.
 
 ---
 
@@ -213,7 +206,12 @@
 ---
 
 # [fit] auth sets up package access on a publish
-# [fit] as a side effect
+# [fit] as a __side effect__
+
+---
+
+# [fit] what happens if a service __crashes__?
+# [fit] or if validation __rejects__ a publish?
 
 ---
 
@@ -273,7 +271,12 @@
 - populate our registry __mirror__
 - fire __webhooks__
 
-^ less time-critical
+^ what do these have in common? they handle package changes one a time
+
+---
+
+## [fit] each log consumer does
+## [fit] __one thing well__
 
 ---
 
@@ -283,28 +286,14 @@
 
 ---
 
-## [fit] pointless trivia!
-## [fit] look at the __Reston__ package
-
-^ the dustiest package in the registry right now is Reston, which is a REST service thing. node's themes were visible early
-
----
-
-# [fit] publication is time-sensitive
-# [fit] we have __tens of seconds__ afterward
-
-^ The clock is ticking on a publication: we want it to go, as fast as possible as robustly as possible, we get only one shot
+## [fit] __Estragon:__ Let's fix publication.
+## [fit] __Vladimir:__ Fine. But how?
 
 ---
 
 ![](images/malcolm-head-hands.gif)
 
 ^ I am tired of microservices. We messed up the modularization. Unwinding failure is a PITA.
-
----
-
-## [fit] __Estragon:__ Let's fix publication.
-## [fit] __Vladimir:__ Fine. But how?
 
 ---
 
@@ -326,8 +315,20 @@
 
 ---
 
+## [fit] a worker does __one thing__
+## [fit] puts a new message back on the queue
+
+---
+
 ## [fit] you __scale__ by adding more workers
-## [fit] \(sounds a lot like the log handlers, huh?)
+
+![inline](images/malcolm-running.gif) ![inline](images/malcolm-running.gif)
+![inline](images/malcolm-running.gif) ![inline](images/malcolm-running.gif)
+
+---
+
+## [fit] queue has to be reliable
+## [fit] workers can crash
 
 ---
 
@@ -340,31 +341,18 @@
 ![](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/pointing.gif)
 
 
-^ re-imagine publishing a package: Publication is a series of steps, each of which can either suceed or fail. Failure triggers a rollback & report to the requesting client.
+^ re-imagine publishing a package: Publication is a series of steps, each of which can either succeed or fail. Failure triggers a rollback & report to the requesting client.
 
 ---
 
-# queue advantages
-
-- retries are easier
-- scale by scaling workers
-- rollback is easier
-- the queue must be reliable, but workers can crash
+## [fit] queue disadvantages?
+## [fit] we don't have them in production
+## [fit] so __∞__ disadvantages!
 
 ---
 
-# queue disadvantages
-
-- complexity
-- complete overhaul of the way things are often structured
-- they're sometimes slow
-
-^ The fast one is Kafka & it's weird & requires the JVM.
-
----
-
-# [fit] we're moving toward queues
-# [fit] slowly, __invisibly__
+## [fit] writing a worker runs headlong into
+## [fit] all the usual problems
 
 ---
 
@@ -375,13 +363,20 @@
 
 ---
 
-# [fit] none of these patterns are __wrong__
-# [fit] none of these patterns are __right__
+# [fit] there is no __silver bullet__
+
+^ none of these patterns are wrong, none of these patterns are right
 
 ---
 
 # [fit] it's __tradeoffs__
 # [fit] all the way down
+
+---
+
+![](images/shrug-malcolm.gif)
+
+^ IDEK
 
 ---
 
@@ -391,4 +386,19 @@
 
 ---
 
-![](/Users/ceej/Dropbox/fun/peter-capaldi/PCapReactionGifs/doctor_bye.gif)
+# [fit] you'll need to fight for __modularity__
+## [fit] no matter what you pick
+
+---
+
+## [fit] build your product first
+## [fit] because that's the hard part
+
+---
+
+## [fit] but know that you can
+## [fit] __change your systems__
+
+---
+
+![](images/doctor_bye.gif)
