@@ -8,14 +8,14 @@
 ## [fit] C J Silverio, CTO
 ## [fit] @ceejbot
 
-^ I have npm engineering under my care. Cat Technology Officer.
+^ I have npm engineering under my care. The image is not me, but of my operations mascot, Malcolm Tucker.
 
 ---
 
 ## [fit] human brains are
 ## [fit] __pattern-detection__ machines
 
-^ Our brain is amazingly good at successively more abstract patterns against things we've experienced before. In comes edges of retina stimulation; out comes an image of our mother's face. And somebody says words and our brains match & produce an image of a tortoise on its back in the desert. Then we recognize a 80s movie adapation of a Philip K Dick novel.
+^ talk about patterns & how we unconsciously search for them-- you'll have found a theme to this conference whether anybody involved in it set out to have one or not.
 
 ---
 
@@ -29,15 +29,13 @@
 ## [fit] patterns in __code__
 ## [fit] patterns in __systems__
 
-^ we find patterns at every level
+^ we find patterns at every level.
 
 ---
 
-## [fit] npm's package registry
-## [fit] has typical __system__ patterns
-## [fit] \(some good, some bad)
+## [fit] emergent __patterns__ in npm's registry
 
-^ We are going to descriptively analyze some patterns I see in the npm registry and how well they do with the underlying theme of npm: modularity is good
+^ Descriptively analyze some patterns in the npm registry.
 
 ---
 
@@ -52,23 +50,28 @@
 
 ---
 
-## [fit] registry, noun:
-## [fit] the services that manage
-# [fit] __packages:__ tar archive + metadata
+## [fit] registry, n: the system of
+## [fit] services that manage __packages__
+# [fit] tar archives + metadata
 
 ^ The thing I have to keep track of for you & serve as fast as possible to you when you ask for it.
 
 ---
 
-# [fit] 318,466 packages
-# [fit] 1.4 million tarballs
+# [fit] 361,263 packages
+# [fit] 2,278,817 million tarballs
 # [fit] __medium__ data (fits on 1 disk)
+
+---
+
+# [fit] npm's __largest__ engineering project
+# [fit] and one of its several scaling problems
 
 ----
 
 ![](images/winking.gif)
 
-^ okay! now we know what we're discussing. let's go into the patterns
+^ I've learned a lot working on this stuff and I'm going to share it now.
 
 ---
 
@@ -120,7 +123,7 @@
 
 ---
 
-## [fit] __modularity:__ a digression
+## [fit] __modularity:__ let's be less vague
 
 ---
 
@@ -157,15 +160,15 @@
 
 ---
 
-# [fit] our 2.0 rewrite switched to
-# [fit] many interconnected __microservices__
+## [fit] the hot trend is rewriting
+## [fit] monoliths as __microservices__
 
-^ They all have fairly names like "frontdoor", auth, validate & store, etc.
+^ We did this, and about half the of the current registry is a web of microservices.
 
 ---
 
-## [fit] you're forced to design an API
-## [fit] forced to hide implementation inside a service
+## [fit] you're __forced__ to design an API
+## [fit] & put implementation inside a service
 
 ^ Modularity is sort of forced on you. At least the attempt at it.
 
@@ -178,19 +181,14 @@
 
 ---
 
-## [fit] can scatter a task across services
+## [fit] can __scatter__ a task across services
 ## [fit] making retries & failure hard to cope with
 
 ---
 
 ![fit](images/obviously.gif)
 
-^ I might be mentioning this for a reason.
-
----
-
-# [fit] mutating data is interesting:
-# [fit] let's look at __publishing__
+^ I might be mentioning this for a reason. Let's look at what happens when you publish a package.
 
 ---
 
@@ -210,9 +208,9 @@
 
 ---
 
-![fit](images/cant-be-good.gif)
+![fit](images/relax.gif)
 
-^ No, it can't. And we'll come back to this.
+^ No, sorry, not gonna relax. We'll come back to this.
 
 ---
 
@@ -232,7 +230,7 @@
 ---
 
 # [fit] [The Log](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying): What every software engineer should know
-## [fit] about real-time data's unifying abstraction
+## [fit] about real-time data's __unifying abstraction__
 
 ^ The blog post to read, from a LinkedIn engineer.
 
@@ -266,7 +264,7 @@
 - populate our registry __mirror__
 - fire __webhooks__
 
-^ what do these have in common? they handle package changes one a time
+^ each one of these is a separate process
 
 ---
 
@@ -292,7 +290,7 @@
 
 ---
 
-## [fit] __Message queues__
+## [fit] __message queues__
 
 ^ This enters the speculative portion of the talk.
 
@@ -322,7 +320,7 @@
 
 ---
 
-## [fit] queue has to be reliable
+## [fit] queue has to be __reliable__
 ## [fit] workers can crash
 
 ---
@@ -346,8 +344,9 @@
 
 ---
 
-## [fit] writing a worker runs headlong into
-## [fit] all the usual problems
+![](images/shrug-malcolm.gif)
+
+^ IDEK-- you can mess up writing a queue worker just as well as you can mess anything else up.
 
 ---
 
@@ -355,6 +354,8 @@
 ## [fit] microservices
 ## [fit] transaction logs
 ## [fit] message queues
+
+^ Woah, look at all these patterns. All of them will be in present in the registry at once over time.
 
 ---
 
@@ -366,12 +367,6 @@
 
 # [fit] it's __tradeoffs__
 # [fit] all the way down
-
----
-
-![](images/shrug-malcolm.gif)
-
-^ IDEK
 
 ---
 
@@ -396,4 +391,9 @@
 
 ---
 
-![](images/doctor_bye.gif)
+# [fit] we'll be changing ours
+# [fit] check back next year to find out how it turned out!
+
+---
+
+![](images/see-me-again.gif)
