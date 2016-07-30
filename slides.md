@@ -235,9 +235,9 @@
 
 ---
 
-## [fit] transaction logs
-## [fit] write-ahead logs (WAL)
-## [fit] commit logs
+## [fit] transaction log
+## [fit] write-ahead log (WAL)
+## [fit] commit log
 
 ^ This is a great pattern! Solid, reliable, the heart of many systems.
 
@@ -289,7 +289,7 @@
 
 ![](images/axe-tank.gif)
 
-^ This is obviously awesome.
+^ This is obviously awesome, so awesome the Twelfth Doctor appears to salute it.
 
 ---
 
